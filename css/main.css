@@ -28,6 +28,7 @@ a#hamburger-menu {
     width: 37px;
     height: auto;
     z-index: 2;
+    cursor: pointer;
 }
 #Score-logo {
     width: 180px;
@@ -40,6 +41,11 @@ a#hamburger-menu {
     margin-right: auto;
 }
 .menu {
+        -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
+
     position: absolute;
     display: block;
     top: 0;
@@ -50,7 +56,21 @@ a#hamburger-menu {
     
 }
 .menu.open {
+    -webkit-transition: all .5s ease-in-out;
+  -moz-transition: all .5s ease-in-out;
+  -o-transition: all .5s ease-in-out;
+  transition: all .5s ease-in-out;
     right: 0;
+        -webkit-box-shadow: -14px 10px 72px -6px rgba(0,0,0,0.75);
+-moz-box-shadow: -14px 10px 72px -6px rgba(0,0,0,0.75);
+box-shadow: -14px 10px 72px -6px rgba(0,0,0,0.75);
+
+}
+.shadow {
+    -webkit-box-shadow: -4px 2px 66px 6px rgba(0,0,0,0.75);
+-moz-box-shadow: -4px 2px 66px 6px rgba(0,0,0,0.75);
+box-shadow: -4px 2px 66px 6px rgba(0,0,0,0.75);
+
 }
 .shadow-left {
     -webkit-box-shadow: -14px 10px 72px -6px rgba(0,0,0,0.75);
@@ -106,7 +126,7 @@ img#close{
     position: relative;
     display: block;
     vertical-align: middle;
-    
+    cursor: pointer;
 }
 .middle-line {
     position: relative;
@@ -118,3 +138,142 @@ img#close{
     background-color: #573D5F;
     
 }
+board {
+
+    -webkit-transition: all .5s ease-in-out;
+    -moz-transition: all .5s ease-in-out;
+    -o-transition: all .5s ease-in-out;
+    transition: all .5s ease-in-out;
+
+
+    position: absolute;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    vertical-align: middle;
+    top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    border:solid 1px #573D5F;
+
+    z-index: 19;
+    width: 0;
+    height: 0;
+    
+    
+}
+board.start {
+
+    -webkit-transition: all 16.3s ease-in-out;
+    -moz-transition: all 16.3s ease-in-out;
+    -o-transition: all 1.63s ease-in-out;
+    transition: all 1.63s ease-in-out;
+    height: 661px;
+
+    -webkit-transition: all 2.3s ease-in-out;
+    -moz-transition: all 2.3s ease-in-out;
+    -o-transition: all 2.3s ease-in-out;
+    transition: all 2.3s ease-in-out;
+
+    width: 607px;
+
+    -webkit-animation: startGame 3s; /* Safari 4.0 - 8.0 */
+    animation: startGame 3s;
+
+}
+@-webkit-keyframes startGame {
+    0%   {top: 0px;}
+    25%  {top: 20%;}
+    75%  {top: 47%}
+    100% {top: 50%;}
+}
+@keyframes mymove {
+    0%   {top: 0px;}
+    25%  {top: 20%;}
+    75%  {top: 47%}
+    100% {top: 50%;}
+}
+block{
+    position: absolute;
+    width: 31%;
+    height: 32%;
+    background-color: #573D5F;
+    border: solid 1px #FD106E;
+    display: none;
+    
+}
+block h1 {
+    line-height: 1.6px;
+   font-family: “Helvetica Neue”, Helvetica, Arial, sans-serif;
+    font-weight: 900;
+    color: #17EBF7;
+    font-size: 113px; 
+    vertical-align: middle;
+    text-align: center;
+    position: relative;
+    left: 0;
+    right: 0;
+    margin-left: auto;
+    margin-right: auto;
+    
+        top: 50%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    margin-top: 3px;
+}
+.tk-proxima-nova-alt-ext-cond
+{
+    
+}
+block.start {
+    -webkit-transition: all 2.3s ease-in-out;
+    -moz-transition: all 2.3s ease-in-out;
+    -o-transition: all 2.3s ease-in-out;
+    transition: all 2.3s ease-in-out;
+
+    display: block;
+}
+#one {
+    top: 7px;
+    left: 7px;
+} 
+
+#two {
+    top: 7px;
+    left: 209px;
+} 
+#three {
+    top: 7px;
+    left: 412px;
+} 
+#four {
+    top: 224px;
+    left: 7px;
+} 
+
+#five {
+    top: 224px;
+    left: 209px;
+} 
+#six {
+    top: 224px;
+    left: 412px;
+}
+#seven {
+    top: 442px;
+    left: 7px;
+} 
+
+#eight {
+    top: 442px;
+    left: 209px;
+} 
+#nine {
+    top: 442px;
+    left: 412px;
+}
+
+
