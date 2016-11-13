@@ -310,3 +310,10 @@ img#l-pink {
     height: auto;
     z-index: 3;
 }
+.gotit {
+        -webkit-transition: all 2.3s ease-in-out;
+    -moz-transition: all 2.3s ease-in-out;
+    -o-transition: all 2.3s ease-in-out;
+    transition: all 2.3s ease-in-out;
+    font-size: 20px;
+}
