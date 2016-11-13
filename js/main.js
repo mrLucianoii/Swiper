@@ -62,7 +62,35 @@ GameBoard.drag = function(ev) {
     
     console.log(ev.target.childNodes);
 }
+GameBoard.swapBlocks = function(swapOutChildParent, swapInChildParent){
+    var swapOutNode = $("[data-drop='"+swapOutChildParent+"']")[0].childNodes[0],
+        swapInNode = $("[data-drop='"+swapInChildParent+"']")[0].childNodes[0],
+        dataDrop1 =  $("[data-drop='"+swapOutChildParent+"']")[0].dataset["drop"],
+        dataOut1 = $("[data-drop='"+swapInChildParent+"']")[0].childNodes[0].dataset["num"],
+        dataDrop2 =  $("[data-drop='"+swapInChildParent+"']")[0].dataset["drop"],
+        dataOut2 = $("[data-drop='"+swapOutChildParent+"']")[0].childNodes[0].dataset["num"];
+    
+    $("[data-drop='"+swapInChildParent+"']")[0].childNodes[0].replaceWith(swapOutNode); 
+    $("[data-drop='"+swapOutChildParent+"']")[0].appendChild(swapInNode);
+    
+   /* console.log(dataDrop1);
+    console.log(dataOut1);
+    console.log(dataDrop2);
+    console.log(dataOut2);
+    */
+    
+    if (dataDrop1 === dataOut1){
+      //  alert("Its a Match: 1");
+        $("[data-drop='"+swapOutChildParent+"']").addClass("matched")
+    }
+    if (dataDrop2 === dataOut2){
+      //  alert("Its a Match: 2");
+        $("[data-drop='"+swapInChildParent+"']").addClass("matched")
 
+    }
+    
+    return console.log("Swapped");
+}
 GameBoard.drop = function(ev) {
     ev.preventDefault();
 
@@ -73,7 +101,7 @@ GameBoard.drop = function(ev) {
     var targPos = ev.path[1].dataset["drop"],
         draggedPos = parseInt(this.dragEleId),
         dragValue = parseInt(this.dragEleIdChild[0].dataset["num"]),
-       targValue = this.targEleIdChild[0].data ;
+        targValue = this.targEleIdChild[0].data ;
    
     console.log( eval(ev.toElement.dataset["drop"]) );
     this.dropzoneBackUp =  eval(ev.toElement.dataset["drop"]);
@@ -88,9 +116,9 @@ GameBoard.drop = function(ev) {
     console.log("dropzone BackUp: " + this.dropzoneBackUp); // dropzoneBackUp
 
     if (targPos === undefined){
-        alert("houston we have a problem");
+      //  alert("houston we have a problem");
         targPos = this.dropzoneBackUp;
-            console.log("dropzone Fix: " + targPos); // dropzone
+        //console.log("dropzone Fix: " + targPos); // dropzone
 
     }
     console.log("element put into: "  + this.dropzoneBackUp); // put into
@@ -101,28 +129,13 @@ GameBoard.drop = function(ev) {
 
         if( targPos === dragValue ){
             console.log("your the coolest");
-            
-            this.arrBlocks[draggedPos -1 ].innerHTML = "FUCKER";
-            
-            this.arrBlocks[targPos - 1].innerHTML = "you";
-            
-            
-            
-            //console.log($(""));
-            console.log(this.arrBlocks[targPos].id);
+            GameBoard.swapBlocks(targPos, draggedPos);
 
-            
         }else{
             console.log("your not cool");
-            var swapOutNode = $("[data-drop='"+targPos+"']")[0].childNodes[0],
-                swapInNode = $("[data-drop='"+draggedPos+"']")[0].childNodes[0];
-            
-            $("[data-drop='"+draggedPos+"']")[0].childNodes[0].replaceWith(swapOutNode); 
-            $("[data-drop='"+targPos+"']")[0].appendChild(swapInNode);
-            
-
+            GameBoard.swapBlocks(targPos, draggedPos);
+           
         }
-
     }else {
         console.log("Get out of here: " + ( draggedPos ));
 
