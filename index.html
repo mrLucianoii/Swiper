@@ -45,33 +45,48 @@
                 <img class="logo" onclick="start(this)" src="img/svg/bodyLogo.svg" />
             
                 <board class="shadow purple-grad">
-                    <block id="one"><h1 class="tk-proxima-nova-alt-ext-cond
-">1</h1></block>
-                    <block id="two"><h1 class="tk-proxima-nova-alt-ext-cond
-">2</h1></block>
-                    <block id="three"><h1 class="tk-proxima-nova-alt-ext-cond
-">3</h1></block>
+                    
+                    <block draggable="true" id="one" data-drop="1" ondrop="GameBoard.drop(event)" ondragover="GameBoard.allowDrop(event)" ondragstart="GameBoard.drag(event)">
+                        <h1 class="tk-proxima-nova-alt-ext-cond" data-num="1">1</h1>
+                    </block>
+                    
+                    <block draggable="true" id="two" data-drop="2" ondrop="GameBoard.drop(event)" ondragover="GameBoard.allowDrop(event)" ondragstart="GameBoard.drag(event)">
+                        <h1 class="tk-proxima-nova-alt-ext-cond" data-num="2">2</h1>
+                    </block>
+                    
+                    
+                    <block draggable="true" id="three" data-drop="3" ondrop="GameBoard.drop(event)" ondragover="GameBoard.allowDrop(event)" ondragstart="GameBoard.drag(event)">
+                        <h1 class="tk-proxima-nova-alt-ext-cond" data-num="3">3</h1>
+                    </block>
 
-                    <block id="four"><h1 class="tk-proxima-nova-alt-ext-cond
-">4</h1></block>
-                    <block id="five"><h1 class="tk-proxima-nova-alt-ext-cond
-">5</h1></block>
-                    <block id="six"><h1 class="tk-proxima-nova-alt-ext-cond
-">6</h1></block>
-
-                    <block id="seven"><h1 class="tk-proxima-nova-alt-ext-cond
-">7</h1></block>
-                    <block id="eight"><h1 class="tk-proxima-nova-alt-ext-cond
-">8</h1></block>
-                    <block id="nine"><h1 class="tk-proxima-nova-alt-ext-cond
-">9</h1></block>
+                    <block draggable="true" id="four" data-drop="4" ondrop="GameBoard.drop(event)" ondragover="GameBoard.allowDrop(event)" ondragstart="GameBoard.drag(event)">
+                        <h1 class="tk-proxima-nova-alt-ext-cond" data-num="4">4</h1>
+                    </block>
+                    <block draggable="true" id="five" data-drop="5" ondrop="GameBoard.drop(event)" ondragover="GameBoard.allowDrop(event)" ondragstart="GameBoard.drag(event)">
+                        <h1 class="tk-proxima-nova-alt-ext-cond" data-num="5">5</h1>
+                    </block>
+                    <block draggable="true" id="six" data-drop="6" ondrop="GameBoard.drop(event)" ondragover="GameBoard.allowDrop(event)" ondragstart="GameBoard.drag(event)">
+                        <h1 class="tk-proxima-nova-alt-ext-cond" data-num="6">6</h1>
+                    </block>
+                    <block draggable="true" id="seven" data-drop="7" ondrop="GameBoard.drop(event)" ondragover="GameBoard.allowDrop(event)" ondragstart="GameBoard.drag(event)">
+                        <h1 class="tk-proxima-nova-alt-ext-cond" data-num="7">7</h1>
+                    </block>
+                    <block draggable="true" id="eight" data-drop="8" ondrop="GameBoard.drop(event)" ondragover="GameBoard.allowDrop(event)" ondragstart="GameBoard.drag(event)">
+                        <h1 class="tk-proxima-nova-alt-ext-cond" data-num="8">8</h1>
+                    </block>
+                    <block draggable="true" id="nine" data-drop="9" ondrop="GameBoard.drop(event)" ondragover="GameBoard.allowDrop(event)" ondragstart="GameBoard.drag(event)">
+                        <h1 class="tk-proxima-nova-alt-ext-cond" data-num="8">9</h1>
+                    </block>
+                    
                 </board>
             
                 <div class="middle-line"></div>
         </section>
         
-        
-                <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
+        <img id="s-pink" src="img/svg/small-pink.svg"/>        
+        <img id="l-pink" src="img/svg/large.svg"/>
+         
+        <script src="//ajax.googleapis.com/ajax/libs/jquery/1.11.2/jquery.min.js"></script>
         <script>window.jQuery || document.write('<script src="js/vendor/jquery-1.11.2.min.js"><\/script>')</script>
 
         <script src="js/vendor/bootstrap.min.js"></script>

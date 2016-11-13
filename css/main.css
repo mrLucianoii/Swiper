@@ -202,6 +202,10 @@ block{
     background-color: #573D5F;
     border: solid 1px #FD106E;
     display: none;
+    perspective: 50px;
+    transition: all 1s ease-in-out;
+    cursor: pointer;
+
     
 }
 block h1 {
@@ -212,17 +216,30 @@ block h1 {
     font-size: 113px; 
     vertical-align: middle;
     text-align: center;
-    position: relative;
+    position: absolute;
+    
     left: 0;
     right: 0;
     margin-left: auto;
     margin-right: auto;
     
         top: 50%;
-    -webkit-transform: translateY(-50%);
-    -ms-transform: translateY(-50%);
-    transform: translateY(-50%);
     margin-top: 3px;
+    
+        /*perspective: 500px;*/
+        transform: translateZ(1000px);
+
+      opacity: 0;
+
+    transition: all 1s ease-in-out;
+
+}
+
+block h1.start{
+    transform: translateZ(0px);
+  opacity: 1;
+
+
 }
 .tk-proxima-nova-alt-ext-cond
 {
@@ -275,5 +292,21 @@ block.start {
     top: 442px;
     left: 412px;
 }
-
-
+img#s-pink {
+    position: fixed;
+    display: block;
+    top: 1px;
+    left: 2px;
+    z-index: 3;
+    width: 17.3px;
+    height: auto;
+}
+img#l-pink {
+    display: block;
+    position: fixed;
+    bottom: 3px;
+    right: 3px;
+    width: 33.3px;
+    height: auto;
+    z-index: 3;
+}
