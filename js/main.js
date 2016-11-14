@@ -15,16 +15,21 @@ var GameBoard = function(){
 }
 GameBoard.start = function(target){
     this.arrBlocks = $("block");
-
+    if (this.arrBlocks.hasClass("matched")){
+        this.arrBlocks.removeClass("matched");
+    }
     $("board, block").toggleClass("start");
     if ( ! $("block h1").hasClass("start")){
         setTimeout(function() {
         $("block h1").addClass("start");
+        GameBoard.timmer(true);
 
-    }, 2000);
+    }, 2000 );
     }else {
         $("block h1").removeClass("start");
+
     }
+    
     var numGen = [1, 2, 3, 4, 5, 6, 7, 8, 9];
    function shuffleArray(array) {
     for (var i = array.length - 1; i > 0; i--) {
@@ -48,13 +53,11 @@ GameBoard.start = function(target){
         this.arrBlocks[i].innerHTML = "<h1 class='tk-proxima-nova-alt-ext-cond' data-num='"+numGen[i]+"'>"+numGen[i]+"</h1>";
 
     }
-    
 }
 GameBoard.allowDrop = function(ev) {
     ev.preventDefault();
     
 }
-
 GameBoard.drag = function(ev) {
 
     this.dragEleId = ev.target.dataset.drop;
@@ -109,7 +112,7 @@ GameBoard.drop = function(ev) {
 
     console.log(typeof targPos);
     if (typeof targPos === undefined){
-        alert("hi");
+   //     alert("hi");
         targPos = ev.toElement.dataset["drop"];   
     }
     console.log("dropzone: " + targPos); // dropzone
@@ -125,14 +128,11 @@ GameBoard.drop = function(ev) {
 
     
     if( draggedPos+1 == targPos || draggedPos-1 == targPos || draggedPos+3 == targPos || draggedPos-3 == targPos){
-                   console.log("your 3 coolest");
 
         if( targPos === dragValue ){
-            console.log("your the coolest");
             GameBoard.swapBlocks(targPos, draggedPos);
 
         }else{
-            console.log("your not cool");
             GameBoard.swapBlocks(targPos, draggedPos);
            
         }
@@ -142,3 +142,24 @@ GameBoard.drop = function(ev) {
     }
     
 }
+GameBoard.timmer = function(startBool){
+   
+    var sec = 0;
+
+    function pad(val) {
+        return val > 9 ? val : "0" + val;
+    }
+        var timer = setInterval(function () {
+        document.getElementById("seconds").innerHTML = pad(++sec % 60);
+        document.getElementById("minutes").innerHTML = pad(parseInt(sec / 60, 10));
+      //  document.getElementById("milliseconds").innerHTML = pad(parseInt( ++sec % 60, 10));
+
+    }, 1000);
+
+    setTimeout(function () {
+        clearInterval(timer);
+    }, 110000);
+    
+ 
+}
+
