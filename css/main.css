@@ -5,12 +5,15 @@ body, html {
     height: 100%;
     width: 100%;
     z-index: 0;
+    overflow: hidden;
 }
 section {
     position: relative;
-    display: flex;
+    display: block;
     width:100%;
     height: 100%;
+    overflow: hidden;
+    
     z-index: 1;
    
 }
@@ -21,7 +24,7 @@ header {
     right: 0;
 }
 a#hamburger-menu {
-    position: fixed;
+    position: absolute;
     top: 23px;
     right: 23px;
     width: 37px;
@@ -46,21 +49,24 @@ a#hamburger-menu {
   transition: all .5s ease-in-out;
 
     position: absolute;
-    display: block;
+    display: none;
     top: 0;
     right: -334px;
     width: 333px;
     height: 100%;
     z-index: 17;
-    
+    display: block;
+    overflow: hidden;
 }
 .menu.open {
-    -webkit-transition: all .5s ease-in-out;
+
+-webkit-transition: all .5s ease-in-out;
   -moz-transition: all .5s ease-in-out;
   -o-transition: all .5s ease-in-out;
-  transition: all .5s ease-in-out;
+  transition: all as.5s ease-in-out;
     right: 0;
-        -webkit-box-shadow: -14px 10px 72px -6px rgba(0,0,0,0.75);
+
+    -webkit-box-shadow: -14px 10px 72px -6px rgba(0,0,0,0.75);
 -moz-box-shadow: -14px 10px 72px -6px rgba(0,0,0,0.75);
 box-shadow: -14px 10px 72px -6px rgba(0,0,0,0.75);
 
@@ -122,10 +128,14 @@ img#close{
     height: 13px;
 }
 .logo {
-    position: relative;
-    display: block;
-    vertical-align: middle;
-    cursor: pointer;
+    position: absolute;
+    width: 180px;
+    display: inline;
+    top: 55%;
+    -webkit-transform: translateY(-50%);
+    -ms-transform: translateY(-50%);
+    transform: translateY(-50%);
+    left: 23px;    cursor: pointer;
 }
 .middle-line {
     position: relative;
@@ -140,7 +150,7 @@ img#close{
 #timmer {
     position: absolute;
     display: inline;
-    top: 47%;
+    top: 45%;
     -webkit-transform: translateY(-47%);
     -ms-transform: translateY(-74%);
     transform: translateY(-47%);    right: 23px;
@@ -199,43 +209,6 @@ board.start {
     animation: startGame 3s;
 
 }
-@media (max-width: 480px){
- board.start {
-
-    -webkit-transition: all 16.3s ease-in-out;
-    -moz-transition: all 16.3s ease-in-out;
-    -o-transition: all 1.63s ease-in-out;
-    transition: all 1.63s ease-in-out;
-    height: 349px;
-
-    -webkit-transition: all 2.3s ease-in-out;
-    -moz-transition: all 2.3s ease-in-out;
-    -o-transition: all 2.3s ease-in-out;
-    transition: all 2.3s ease-in-out;
-    
-    width: 281px;
-    
-     padding-top: 3px;
-     
-    -webkit-animation: startGame 3s; /* Safari 4.0 - 8.0 */
-    animation: startGame 3s;
-
-    }
-    
-    .logo {
-        position: absolute;
-        bottom: 0;
-        width: 133px;
-        height: auto;
-        
-    }
-    #timmer {
-        position: absolute;
-        top: 7px;
-        
-    }
-
-}
 @media (max-width: 768px){
  board.start {
 
@@ -272,7 +245,87 @@ board.start {
         margin-right: auto;
         text-align: center;
     } 
+      a#hamburger-menu {
+        position: absolute;
+        top: 13px;
+        right: 13px;
+    }
 }
+@media (max-width: 480px){
+ board.start {
+
+    -webkit-transition: all 16.3s ease-in-out;
+    -moz-transition: all 16.3s ease-in-out;
+    -o-transition: all 1.63s ease-in-out;
+    transition: all 1.63s ease-in-out;
+    height: 349px;
+
+    -webkit-transition: all 2.3s ease-in-out;
+    -moz-transition: all 2.3s ease-in-out;
+    -o-transition: all 2.3s ease-in-out;
+    transition: all 2.3s ease-in-out;
+    
+    width: 281px;
+    
+     padding-top: 3px;
+     
+    -webkit-animation: startGame 3s; /* Safari 4.0 - 8.0 */
+    animation: startGame 3s;
+
+    }
+    .logo {
+        position: absolute;
+        bottom: 0;
+        width: 133px;
+        height: auto;
+        
+    }
+    #timmer {
+        position: absolute;
+        top: 7px;
+        
+    }
+
+}
+@media (max-width: 330px){
+ board.start {
+
+    -webkit-transition: all 16.3s ease-in-out;
+    -moz-transition: all 16.3s ease-in-out;
+    -o-transition: all 1.63s ease-in-out;
+    transition: all 1.63s ease-in-out;
+    height: 281px;
+
+    -webkit-transition: all 2.3s ease-in-out;
+    -moz-transition: all 2.3s ease-in-out;
+    -o-transition: all 2.3s ease-in-out;
+    transition: all 2.3s ease-in-out;
+    
+    width: 229px;
+    
+    -webkit-animation: startGame 3s; /* Safari 4.0 - 8.0 */
+    animation: startGame 3s;
+
+    }
+        .logo {
+        position: absolute;
+        bottom: 0;
+        width: 133px;
+        height: auto;
+        text-align: center;
+    }
+    #timmer {
+        position: absolute;
+        top: 47px;
+        left: 0;
+        right: 0;
+        margin-left: auto;
+        margin-right: auto;
+        text-align: center;
+    }
+  
+}
+
 @-webkit-keyframes startGame {
     0%   {top: 0px;}
     25%  {top: 20%;}
@@ -369,3 +422,13 @@ img#l-pink {
     transition: all 0.5s ease-in-out;
 background-color: #573D5F
 }
+block.firstClick {
+    -webkit-transition: all 0.5s ease-in-out;
+    -moz-transition: all 0.5s ease-in-out;
+    -o-transition: all 0.5s ease-in-out;
+    transition: all 0.5s ease-in-out;
+    background-color: #202020;
+    font-size: 37px;
+    box-shadow:inset 3px 4px 5px #000;
+}
+

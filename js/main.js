@@ -1,6 +1,4 @@
 
-
-
 var toggleMenu = function(target){
     $(".menu").toggleClass("open");
     
@@ -13,7 +11,15 @@ var GameBoard = function(){
     this.targEleIdChild = null;
     
 }
+GameBoard.hashTable = function(){
+ /*   this.hash = [
+        [1,3], [-1, 1, 3], [-1, 3] 
+        [-3, 1, -3]
+    ] */
+}
 GameBoard.start = function(target){
+    
+    
     this.arrBlocks = $("block");
     if (this.arrBlocks.hasClass("matched")){
         this.arrBlocks.removeClass("matched");
@@ -53,6 +59,47 @@ GameBoard.start = function(target){
         this.arrBlocks[i].innerHTML = "<h1 class='tk-proxima-nova-alt-ext-cond' data-num='"+numGen[i]+"'>"+numGen[i]+"</h1>";
 
     }
+var counterClick = true,
+    click1, click2;
+    
+$("board").on('click', function(ev){
+     console.log($(this));     
+     console.log(ev.target);
+        console.log(ev.target.offsetParent.dataset["drop"]);
+
+    
+    
+    var dTarget = null;
+    
+    
+    if (counterClick){
+       dTarget = ev.target.offsetParent; // UI Effect
+        $(dTarget).addClass("firstClick");
+        click1 = ev.target.offsetParent.dataset["drop"]; //Get Pos
+        
+        counterClick = false;    
+    }else {
+        click2 = ev.target.offsetParent.dataset["drop"];
+        GameBoard.mobileClick(click1, click2);
+        
+        $("[data-drop='"+click1+"']").removeClass("firstClick");
+        counterClick = true;
+    }
+   
+
+});
+
+}
+GameBoard.mobileClick = function(c1, c2 ){
+    
+    //Find availble spots
+    //Take secondClick input
+    console.log("inside mobile click");
+    
+    GameBoard.swapBlocks(c1, c2);
+    
+    return true;
+    
 }
 GameBoard.allowDrop = function(ev) {
     ev.preventDefault();
@@ -80,7 +127,7 @@ GameBoard.swapBlocks = function(swapOutChildParent, swapInChildParent){
     console.log(dataOut1);
     console.log(dataDrop2);
     console.log(dataOut2);
-    */
+    */ 
     
     if (dataDrop1 === dataOut1){
       //  alert("Its a Match: 1");
@@ -93,6 +140,7 @@ GameBoard.swapBlocks = function(swapOutChildParent, swapInChildParent){
     }
     
     return console.log("Swapped");
+
 }
 GameBoard.drop = function(ev) {
     ev.preventDefault();
