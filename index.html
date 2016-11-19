@@ -43,7 +43,9 @@
         
         <section class="purple-grad" >
                 <img class="logo" onclick="GameBoard.start(this)" src="img/svg/bodyLogo.svg" />
-            
+                
+                <!--<div class="middle-line"></div>-->
+
                 <board class="shadow purple-grad">
                     
                     <block draggable="true" id="one" data-drop="1" ondrop="GameBoard.drop(event)" ondragover="GameBoard.allowDrop(event)" ondragstart="GameBoard.drag(event)">
@@ -79,10 +81,9 @@
                     </block>
                     
                 </board>
-            <aside id="timmer" class="tk-proxima-nova-alt-ext-cond"><span id="minutes">00</span>:<span id="seconds">00</span>:<span id="milliseconds">00</span><h1 id="counter">0</h1></aside>
-            <h1 id="counter">0</h1>
+            <aside id="timmer" class="tk-proxima-nova-alt-ext-cond">
+              <span id="minutes">00</span>:<span id="seconds">00</span> 
         
-                <div class="middle-line"></div>
         </section>
         
        

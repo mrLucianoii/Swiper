@@ -5,6 +5,7 @@ var toggleMenu = function(target){
 }
 
 var GameBoard = function(){
+    //Create gameboard properties
     this.dragEleId = null;
     this.targEleId = null;
     this.dragEleIdChild = null;
@@ -20,22 +21,24 @@ GameBoard.hashTable = function(){
 }
 GameBoard.start = function(target){
     
-    this.matchedCounter = 0;
-    this.arrBlocks = $("block");
+    this.matchedCounter = 0; // Gamescore property for later versions
+    this.arrBlocks = $("block"); //child of Board parent 
+
     if (this.arrBlocks.hasClass("matched")){
         this.arrBlocks.removeClass("matched");
     }
+
     $("board, block").toggleClass("start");
     if ( ! $("block h1").hasClass("start")){
         setTimeout(function() {
-        $("block h1").addClass("start");
-        GameBoard.timmer(true);
+            $("block h1").addClass("start");
+             GameBoard.timmer(true); //start timmer
+         }, 2000 );
 
-    }, 2000 );
     }else {
         $("block h1").removeClass("start");
-
-    }
+         GameBoard.stop(); //stop timmer
+    }   
     
     var numGen = [1, 2, 3, 4, 5, 6, 7, 8, 9];
    function shuffleArray(array) {
@@ -55,6 +58,7 @@ GameBoard.start = function(target){
         target = Math.floor(Math.random() * 9) + 1;
     }*/
    
+   //Build Blocks on gamestart
     for(var i=0; i < this.arrBlocks.length; i++){
         this.arrBlocks[i].innerHTML = "";
         this.arrBlocks[i].innerHTML = "<h1 class='tk-proxima-nova-alt-ext-cond' data-num='"+numGen[i]+"'>"+numGen[i]+"</h1>";
@@ -63,6 +67,7 @@ GameBoard.start = function(target){
 var counterClick = true,
     click1, click2;
     
+//Handle mouse events--two step click had more value over drag on mobile device
 $("board").on('click', function(ev){ 
     var dTarget = null;
     
@@ -198,39 +203,30 @@ GameBoard.timmer = function(startBool){
     var sec = 0,
         start = new Date(Date.now()),
         end = 0;
+    this.timer = 0;
     
             console.log( parseInt(start.getSeconds()));
 
-        function pad(val) {
+    function pad(val) {
         return val > 9 ? val : "0" + val;
-        }
-        var timer = setInterval(function () {
-            document.getElementById("seconds").innerHTML = pad(++sec % 60);
-            document.getElementById("minutes").innerHTML = pad(parseInt(sec / 60, 10));
+    }
+
+        this.timer = setInterval(function () {
+            document.getElementById("seconds").innerHTML = pad(sec+1 % 60);
+            document.getElementById("minutes").innerHTML = pad(parseInt( sec / 60 ));
                 
             GameBoard.seconds =  pad(++sec % 60);  
             GameBoard.minutes =  pad(parseInt(sec / 60, 10));
             GameBoard.finishedTimes = parseInt(this.minutes) + " : " + parseInt(this.seconds);
-
-        //  document.getElementById("milliseconds").innerHTML = pad(parseInt( ++sec % 60, 10));
-
-        }, 1000);
-        
-    if( startBool ){
-        timerIO = 110000;
-    }else{
-        
-        
-        console.log( parseInt(start.getSeconds()));
-    console.log( parseInt(end.getSeconds()));
-        
-    }
-        setTimeout(function () {
-            clearInterval(timer);
-        }, timerIO);
     
+            //  document.getElementById("milliseconds").innerHTML = pad(parseInt( ++sec % 60, 10));
     
- 
+            }, 1000);
+    
+}
+GameBoard.stop = function(){
+    clearInterval(this.timer);
+
 }
 
 
