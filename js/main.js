@@ -1,4 +1,4 @@
-
+alert("Hello! Click the logo to launch the game.")
 var toggleMenu = function(target){
     $(".menu").toggleClass("open");
     
@@ -9,6 +9,7 @@ var GameBoard = function(){
     this.targEleId = null;
     this.dragEleIdChild = null;
     this.targEleIdChild = null;
+    this.matchedCounter = 0;
     
 }
 GameBoard.hashTable = function(){
@@ -19,7 +20,7 @@ GameBoard.hashTable = function(){
 }
 GameBoard.start = function(target){
     
-    
+    this.matchedCounter = 0;
     this.arrBlocks = $("block");
     if (this.arrBlocks.hasClass("matched")){
         this.arrBlocks.removeClass("matched");
@@ -62,18 +63,12 @@ GameBoard.start = function(target){
 var counterClick = true,
     click1, click2;
     
-$("board").on('click', function(ev){
-     console.log($(this));     
-     console.log(ev.target);
-        console.log(ev.target.offsetParent.dataset["drop"]);
-
-    
-    
+$("board").on('click', function(ev){ 
     var dTarget = null;
     
     
     if (counterClick){
-       dTarget = ev.target.offsetParent; // UI Effect
+        dTarget = ev.target.offsetParent; // UI Effect
         $(dTarget).addClass("firstClick");
         click1 = ev.target.offsetParent.dataset["drop"]; //Get Pos
         
@@ -123,20 +118,28 @@ GameBoard.swapBlocks = function(swapOutChildParent, swapInChildParent){
     $("[data-drop='"+swapInChildParent+"']")[0].childNodes[0].replaceWith(swapOutNode); 
     $("[data-drop='"+swapOutChildParent+"']")[0].appendChild(swapInNode);
     
-   /* console.log(dataDrop1);
-    console.log(dataOut1);
-    console.log(dataDrop2);
-    console.log(dataOut2);
-    */ 
-    
     if (dataDrop1 === dataOut1){
       //  alert("Its a Match: 1");
         $("[data-drop='"+swapOutChildParent+"']").addClass("matched")
+        this.matchedCounter += 1;
+        console.log(this.matchedCounter);
+        document.getElementById("counter").innerHTML = parseInt(this.matchedCounter);
+    
     }
     if (dataDrop2 === dataOut2){
       //  alert("Its a Match: 2");
         $("[data-drop='"+swapInChildParent+"']").addClass("matched")
+        this.matchedCounter += 1;
+        document.getElementById("counter").innerHTML = parseInt(this.matchedCounter);
 
+    }
+    
+    if(this.matchedCounter > 8){
+        //stop timmer
+        alert("Nicely Done!");
+        this.timmer(false);
+        alert(this.finishedTimes);
+        
     }
     
     return console.log("Swapped");
@@ -185,29 +188,49 @@ GameBoard.drop = function(ev) {
            
         }
     }else {
-        console.log("Get out of here: " + ( draggedPos ));
+        console.log("Error on drop drag position: " + draggedPos );
 
     }
     
 }
 GameBoard.timmer = function(startBool){
    
-    var sec = 0;
+    var sec = 0,
+        start = new Date(Date.now()),
+        end = 0;
+    
+            console.log( parseInt(start.getSeconds()));
 
-    function pad(val) {
+        function pad(val) {
         return val > 9 ? val : "0" + val;
-    }
+        }
         var timer = setInterval(function () {
-        document.getElementById("seconds").innerHTML = pad(++sec % 60);
-        document.getElementById("minutes").innerHTML = pad(parseInt(sec / 60, 10));
-      //  document.getElementById("milliseconds").innerHTML = pad(parseInt( ++sec % 60, 10));
+            document.getElementById("seconds").innerHTML = pad(++sec % 60);
+            document.getElementById("minutes").innerHTML = pad(parseInt(sec / 60, 10));
+                
+            GameBoard.seconds =  pad(++sec % 60);  
+            GameBoard.minutes =  pad(parseInt(sec / 60, 10));
+            GameBoard.finishedTimes = parseInt(this.minutes) + " : " + parseInt(this.seconds);
 
-    }, 1000);
+        //  document.getElementById("milliseconds").innerHTML = pad(parseInt( ++sec % 60, 10));
 
-    setTimeout(function () {
-        clearInterval(timer);
-    }, 110000);
+        }, 1000);
+        
+    if( startBool ){
+        timerIO = 110000;
+    }else{
+        
+        
+        console.log( parseInt(start.getSeconds()));
+    console.log( parseInt(end.getSeconds()));
+        
+    }
+        setTimeout(function () {
+            clearInterval(timer);
+        }, timerIO);
+    
     
  
 }
+
 

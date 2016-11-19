@@ -159,9 +159,13 @@ img#close{
 
 }
 #timmer span{
+    
     color: #fff;
     font-size: 71px;
     
+}
+#counter {
+    margin-top: -13px;
 }
 board {
 
@@ -278,11 +282,12 @@ board.start {
         bottom: 0;
         width: 133px;
         height: auto;
+        top: 93%;
         
     }
     #timmer {
         position: absolute;
-        top: 7px;
+        top: 15%;
         
     }
 
@@ -420,7 +425,9 @@ img#l-pink {
     -moz-transition: all 0.5s ease-in-out;
     -o-transition: all 0.5s ease-in-out;
     transition: all 0.5s ease-in-out;
-background-color: #573D5F
+background-color: #573D5F;
+        box-shadow:inset 3px 4px 5px #000;
+
 }
 block.firstClick {
     -webkit-transition: all 0.5s ease-in-out;
